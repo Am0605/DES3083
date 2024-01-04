@@ -61,7 +61,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="inventory.php">
           <i class="bi bi-menu-button-wide"></i>
-          <span>Inventory</span>
+          <span>Inventory 1</span>
         </a>
       </li><!-- End Inventory Nav -->
 
