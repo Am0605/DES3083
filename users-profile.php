@@ -214,7 +214,7 @@
                     </div>
 
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Change Password</button>
+                      <button type="submit" class="btn btn-primary" onclick="openpasswordform()">Change Password</button>
                     </div>
                   </form><!-- End Change Password Form -->
 
@@ -259,6 +259,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/try.js"></script>
 
 </body>
 
