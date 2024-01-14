@@ -1,0 +1,7 @@
+{
+    "require": {
+        "tebazil/db-seeder": "^1.0",
+        "fzaninotto/faker": "^1.5",
+        "jzonta/faker-restaurant": "^1.1"
+    }
+}

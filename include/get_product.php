@@ -1,25 +1,22 @@
 <?php
-include 'dblink.php';
+include 'Connection.php';
 
-// Your SQL query
-$sql = "SELECT productid, productname, productdescription, price FROM product";
+// $sql = "SELECT productid, productname, productdescription, price FROM product";
 
-// Execute the query
-$result = $conn->query($sql);
+$stmt = $pdo->prepare("SELECT productid, productname, productdescription, price FROM product");
+
+$stmt->execute();
 
 // Fetch the data
 $data = array();
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
+
+    while($row = $stmt->fetch()) {
         $data[] = $row;
     }
-} else {
-    echo "0 results";
-}
+
 
 // Output the data in JSON format
 echo json_encode($data);
 
-// Close the connection
-$conn->close();
+$pdo = null;
 ?>
