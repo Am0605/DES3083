@@ -49,7 +49,7 @@
 </head>
 
 <body>
-  <?php include("include/header.php");?>
+  <?php require 'require/header.php'?>
 
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
@@ -399,6 +399,6 @@
   </main><!-- End #main -->
  </body>
 
- <?php include("include/footer.php");?>
+ <?php require 'require/footer.php';?>
 
 </html>
