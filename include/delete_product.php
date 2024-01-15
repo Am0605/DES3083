@@ -1,16 +1,15 @@
 <?php
-include 'dblink.php';
+include 'Connection.php';
 
 // Check if productId is provided
 if (isset($_POST['productId'])) {
     // Use prepared statement to prevent SQL injection
     $sql = "DELETE FROM product WHERE productid = ?";
     
-    // Prepare the statement
-    $stmt = $conn->prepare($sql);
     
-    // Bind the productId parameter
-    $stmt->bind_param("i", $productId);
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->bindParam(1,$productId);
 
     // Set the value of $productId
     $productId = $_POST['productId'];
@@ -19,15 +18,15 @@ if (isset($_POST['productId'])) {
     if ($stmt->execute()) {
         echo "Record deleted successfully";
     } else {
-        echo "Error deleting record: " . $conn->error;
+        echo "Error deleting record: " . $pdo->errorInfo()[2];
     }
 
     // Close the statement
-    $stmt->close();
+    $stmt = null;
 } else {
     echo "Error: Product ID not provided";
 }
 
 // Close the database connection
-$conn->close();
+$pdo = null;
 ?>

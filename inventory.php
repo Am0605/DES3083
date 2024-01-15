@@ -209,7 +209,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form id="addProductForm" method="post" action="C:\xampp\htdocs\phpscript\sweetsystem\include\add_product.php">
+            <form id="addProductForm" method="post" action="include/add_product.php">
               <div class="form-group">
                 <label for="productname">Product Name</label>
                 <input type="text" class="form-control" id="productname" name="productname" required>
@@ -241,7 +241,7 @@
             </button>
           </div>
           <div class="modal-body">
-            <form id="editProductForm" method="post" action="C:\xampp\htdocs\phpscript\sweetsystem\include\update_product.php">
+            <form id="editProductForm" method="post" action="include/update_product.php">
               <!-- Product ID hidden field -->
               <input type="hidden" id="editproductid" name="editproductid">
 
