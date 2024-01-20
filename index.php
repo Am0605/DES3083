@@ -80,16 +80,13 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Sales</h5>
-
+                  <h5 class="card-title">Sales <span>| Today</span></h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
                       <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
                     </div>
                   </div>
                 </div>
@@ -122,8 +119,6 @@
                     </div>
                     <div class="ps-3">
                       <h6>$3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
                     </div>
                   </div>
                 </div>
@@ -158,8 +153,6 @@
                     </div>
                     <div class="ps-3">
                       <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
                     </div>
                   </div>
 
@@ -200,39 +193,46 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
+                        <th scope="row"><img src="assets/img/bananacake.jpeg" alt=""></th>
+                        <td>Banana cake with cream cheese</td>
+                        <td>19</td>
+                        <td class="fw-bold">124</td>
+                        <td>1242</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><img src="assets/img/Bento Cake.jpeg" alt=""></th>
+                        <td>Bento Cake</td>
+                        <td>9</td>
+                        <td class="fw-bold">88</td>
+                        <td>893</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><img src="assets/img/Muffin Cake.jpg" alt=""></th>
+                        <td>Muffin Cake</td>
+                        <td>8</td>
                         <td class="fw-bold">124</td>
                         <td>$5,828</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
+                        <th scope="row"><img src="assets/img/Macaron.jpeg" alt=""></th>
+                        <td>Macaron</td>
+                        <td>17</td>
+                        <td class="fw-bold">124</td>
+                        <td>$5,828</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
+                        <th scope="row"><img src="assets/img/Cheese tart.jpeg" alt=""></th>
+                        <td>Cheese tart</td>
+                        <td>12</td>
+                        <td class="fw-bold">124</td>
+                        <td>$5,828</td>
                       </tr>
                       <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
+                        <th scope="row"><img src="assets/img/Pie.jpeg" alt=""></th>
+                        <td>Pie</td>
+                        <td>10</td>
+                        <td class="fw-bold">124</td>
+                        <td>$5,828</td>
                       </tr>
                     </tbody>
                   </table>
