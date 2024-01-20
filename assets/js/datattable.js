@@ -132,4 +132,6 @@ function editProduct() {
           // Handle error messages if needed
       }
   });
+
+  
 }
