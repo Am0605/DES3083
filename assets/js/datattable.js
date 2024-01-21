@@ -7,6 +7,9 @@ function openaddForm() {
 function closeeditForm() {
   $('#editproductmodal').modal('hide');
 }
+function closeeditOrForm() {
+  $('#editordermodal').modal('hide');
+}
 
  function addProduct() {
   var productname = document.getElementById('productname').value

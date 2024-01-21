@@ -82,7 +82,8 @@
         <table id="product" class="table table-striped" style="width:100%">
           <thead>
             <tr>
-              <th>ID</th>
+              <th style="display:none;">ID</th>
+              <th>BIL</th>
               <th>Name</th>
               <th>Description</th>
               <th>Price</th>
@@ -101,7 +102,14 @@
               "dataSrc": ""
             },
             "columns": [{
-                "data": "productid"
+                "data": "productid",
+                "visible": false // Hide the ID column
+              },
+              {
+                "data": null,
+                "render": function(data, type, full, meta) {
+                  return meta.row + 1; // BIL column
+                }
               },
               {
                 "data": "productname"

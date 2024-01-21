@@ -1,22 +1,6 @@
 <!-- ======= Tepi ======= -->
 <aside id="sidebar" class="sidebar">
 
-<script>
-  // tukar colour bila select
-  document.addEventListener("DOMContentLoaded", function () {
-    var currentPage = window.location.pathname;
-
-    var navLinks = document.querySelectorAll('.nav-link');
-
-    navLinks.forEach(function (link) {
-      if (link.getAttribute('href') === currentPage) {
-        link.classList.remove('collapsed');
-        link.classList.add('active');
-      }
-    });
-  });
-</script>
-
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-heading">Menu</li>
@@ -36,7 +20,7 @@
   </li><!-- End Inventory Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="order.php">
+    <a class="nav-link " href="order.php">
       <i class="bi bi-menu-button-wide"></i>
       <span>Order</span>
     </a>
@@ -49,12 +33,12 @@
     </a>
   </li>End Supplier Nav -->
 
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link collapsed" href="Orderlist.php">
       <i class="bi bi-menu-button-wide"></i>
       <span>Order From Customer</span>
     </a>
-  </li><!-- End Supplier Nav -->
+  </li> -->
 
   <!-- <li class="nav-item">
     <a class="nav-link collapsed" href="users-profile.php">

@@ -37,7 +37,6 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
   <title>Dashboard - Sweet Tooth Bakery System</title>
 </head>
 
@@ -118,7 +117,7 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>$3,264</h6>
+                      <h6>$4556</h6>
                     </div>
                   </div>
                 </div>
@@ -152,7 +151,7 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>1244</h6>
+                      <h6>864</h6>
                     </div>
                   </div>
 
@@ -197,42 +196,42 @@
                         <td>Banana cake with cream cheese</td>
                         <td>19</td>
                         <td class="fw-bold">124</td>
-                        <td>1242</td>
+                        <td>2356</td>
                       </tr>
                       <tr>
                         <th scope="row"><img src="assets/img/Bento Cake.jpeg" alt=""></th>
                         <td>Bento Cake</td>
                         <td>9</td>
                         <td class="fw-bold">88</td>
-                        <td>893</td>
+                        <td>792</td>
                       </tr>
                       <tr>
                         <th scope="row"><img src="assets/img/Muffin Cake.jpg" alt=""></th>
                         <td>Muffin Cake</td>
                         <td>8</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
+                        <td class="fw-bold">176</td>
+                        <td>1408</td>
                       </tr>
                       <tr>
                         <th scope="row"><img src="assets/img/Macaron.jpeg" alt=""></th>
                         <td>Macaron</td>
                         <td>17</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
+                        <td class="fw-bold">122</td>
+                        <td>2074</td>
                       </tr>
                       <tr>
                         <th scope="row"><img src="assets/img/Cheese tart.jpeg" alt=""></th>
                         <td>Cheese tart</td>
                         <td>12</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
+                        <td class="fw-bold">233</td>
+                        <td>2796</td>
                       </tr>
                       <tr>
                         <th scope="row"><img src="assets/img/Pie.jpeg" alt=""></th>
                         <td>Pie</td>
                         <td>10</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
+                        <td class="fw-bold">80</td>
+                        <td>800</td>
                       </tr>
                     </tbody>
                   </table>

@@ -6,7 +6,7 @@ $contactnum = $_POST['contactNumber'];
 $email = $_POST['email'];
 $address = $_POST['address'];
 $product = $_POST['product'];
-$amount = $_POST['amount'];
+$quantity = $_POST['quantity'];
 
 $data1 = [
     'name' => $name,
@@ -17,7 +17,7 @@ $data1 = [
 
 $data2 = [
     'product' => $product,
-    'amount' => $amount,
+    'quantity' => $quantity,
 ];
 
 //pakai placeholder sini
