@@ -45,7 +45,7 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="pages-login.html">
+                        <a class="dropdown-item d-flex align-items-center" href="pages-login.php">
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Sign Out</span>
                         </a>

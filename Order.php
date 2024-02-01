@@ -88,8 +88,8 @@
               <th>Address</th>
               <th>Product</th>
               <th>Quantity</th>
-              <th>Price</th> 
-              <th>Discount</th>
+              <th>Price</th>
+              <th>Discount (%)</th>
               <th>Total(RM)</th>
               <th>Action</th>
             </tr>
@@ -99,63 +99,79 @@
         </table>
         <script>
           $(document).ready(function() {
-    $('#order').DataTable({
-        "ajax": {
-            "url": "include/get_order.php",
-            "dataSrc": ""
-        },
-        "columns": [
-            { "data": "productid", "visible": false },
-            { "data": "orderid", "visible": false },
-            {
-                "data": null,
-                "render": function(data, type, full, meta) {
+            $('#order').DataTable({
+              "ajax": {
+                "url": "include/get_order.php",
+                "dataSrc": ""
+              },
+              "columns": [{
+                  "data": "productid",
+                  "visible": false
+                },
+                {
+                  "data": "orderid",
+                  "visible": false
+                },
+                {
+                  "data": null,
+                  "render": function(data, type, full, meta) {
                     return meta.row + 1; // BIL column
-                }
-            },
-            { "data": "customer" },
-            { "data": "address" },
-            { "data": "productname" },
-            { "data": "quantity" },
-            { "data": "price" },
-            { "data": "discount" },
-            {
-                "data": null,
-                "render": function(data, type, full) {
+                  }
+                },
+                {
+                  "data": "customername"
+                },
+                {
+                  "data": "address"
+                },
+                {
+                  "data": "productname"
+                },
+                {
+                  "data": "quantity"
+                },
+                {
+                  "data": "price"
+                },
+                {
+                  "data": "discount"
+                },
+                {
+                  "data": null,
+                  "render": function(data, type, full) {
                     // Calculate Total Price: (Price - Discount) * Quantity
-                    var total = (parseFloat(full.price) - parseFloat(full.discount)) * parseFloat(full.quantity);
+                    var total = (parseFloat(full.price) * parseFloat(full.quantity)) - ((parseFloat(full.price) * parseFloat(full.quantity)) * parseFloat(full.discount) / 100);
                     return total.toFixed(2);
-                }
-            },
-            {
-                "data": null,
-                "render": function(data, type, full) {
+                  }
+                },
+                {
+                  "data": null,
+                  "render": function(data, type, full) {
                     var btnEdit = $('<button/>').addClass('btn btn-info btn-xs editorder')
-                        .attr('data-orderid', full.orderid)
-                        .attr('data-target', '#editordermodal')
-                        .text('Edit');
+                      .attr('data-orderid', full.orderid)
+                      .attr('data-target', '#editordermodal')
+                      .text('Edit');
 
                     var btnDelete = $('<button/>').addClass('btn btn-danger btn-xs deleteorder')
-                        .attr('data-orderid', full.orderid)
-                        .text('Delete');
+                      .attr('data-orderid', full.orderid)
+                      .text('Delete');
 
                     var btnGroup = $('<div/>').addClass('btn-group')
-                        .attr('role', 'group')
-                        .append(btnEdit)
-                        .append(btnDelete);
+                      .attr('role', 'group')
+                      .append(btnEdit)
+                      .append(btnDelete);
 
                     return $('<div/>').append(btnGroup).html();
+                  }
                 }
-            }
-        ],
-        "searching": false,
-    });
+              ],
+              "searching": false,
+            });
 
-    $('#addOrder').click(function() {
-        $('#addOrderModal').modal('show');
-    });
-});
-
+            $('#addOrder').click(function() {
+              $('#addOrderModal').modal('show');
+            });
+          });
         </script>
     </section>
     <!-- modal untuk add order -->
@@ -283,7 +299,7 @@
 
     </div>
 
-    <script>
+    <!-- <script>
       // Example:
       let cart = [];
 
@@ -311,55 +327,9 @@
 
       // Call the updateCartTable function to initially populate the table
       updateCartTable();
-    </script>
+    </script> -->
 
     <script>
-      function addOrder() {
-        // Retrieve form data
-        var formData = $("#addOrderForm").serialize();
-
-        // Make an AJAX request to add the order
-        $.ajax({
-          url: "include/add_order.php",
-          type: "POST",
-          data: formData,
-          success: function(response) {
-            // Check if the order was added successfully
-            if (response.success) {
-              // Reload the DataTable and close the modal
-              $("#product").DataTable().ajax.reload();
-              $("#addOrderModal").modal("hide");
-
-              // Display a success message using SweetAlert
-              Swal.fire({
-                icon: "success",
-                title: "Order Added",
-                text: response.message,
-              });
-            } else {
-              // Display an error message using SweetAlert
-              Swal.fire({
-                icon: "error",
-                title: "Error Adding Order",
-                text: response.message,
-              });
-            }
-          },
-          error: function(error) {
-            console.error("Error adding order:", error);
-            // Display a generic error message using SweetAlert
-            Swal.fire({
-              icon: "error",
-              title: "Error Adding Order",
-              text: "An unexpected error occurred while adding the order.",
-            });
-          },
-        });
-      }
-
-      function closeorderForm() {
-        $('#addOrderModal').modal('hide');
-      }
 
       // function addProductInput() {
       //   var select = $('select[name="product[]"]');

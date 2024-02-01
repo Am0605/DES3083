@@ -140,5 +140,29 @@ function editProduct() {
     },
   });
 
-  
+  function addOrder() {
+        // Retrieve form data
+        var formData = $("#addOrderForm").serialize();
+
+        // Make an AJAX request to add the order
+        $.ajax({
+          url: "include/add_order.php",
+          type: "POST",
+          data: formData,
+          success: function(response) {
+              $("#addOrderModal").modal("hide");
+              $("#order").DataTable().ajax.reload();
+              Swal.fire({
+                icon: "success",
+                title: "Order Added",
+                text: response.message,
+              });
+            
+          },
+        });
+      }
+
+      function closeorderForm() {
+        $('#addOrderModal').modal('hide');
+      }
 }

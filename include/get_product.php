@@ -10,9 +10,9 @@ $stmt->execute();
 // Fetch the data
 $data = array();
 
-    while($row = $stmt->fetch()) {
-        $data[] = $row;
-    }
+while($row = $stmt->fetch()) {
+    $data[] = $row;
+}
 
 
 // Output the data in JSON format
