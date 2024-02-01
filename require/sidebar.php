@@ -20,7 +20,7 @@
   </li><!-- End Inventory Nav -->
 
   <li class="nav-item">
-    <a class="nav-link " href="order.php">
+    <a class="nav-link collapsed" href="order.php">
       <i class="bi bi-menu-button-wide"></i>
       <span>Order</span>
     </a>

@@ -26,7 +26,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -78,18 +78,17 @@
         <div align="right">
           <button type="button" name="add" id="addOrder" class="btn btn-success btn-xs" onclick="openaddOrder()">Add Order</button>
         </div>
-        <table id="product" class="table table-striped" style="width:100%">
+        <table id="order" class="table table-striped" style="width:100%">
           <thead>
             <tr>
               <th style="display:none;">product ID</th>
-              <th style="display:none;">customer ID</th>
+              <th style="display:none;">order ID</th>
               <th>BIL</th>
               <th>Customer</th>
               <th>Address</th>
-              <th>Date</th>
               <th>Product</th>
               <th>Quantity</th>
-              <th>Price</th>
+              <th>Price</th> 
               <th>Discount</th>
               <th>Total(RM)</th>
               <th>Action</th>
@@ -100,81 +99,63 @@
         </table>
         <script>
           $(document).ready(function() {
-            $('#product').DataTable({
-              "ajax": {
-                "url": "include/get_order.php",
-                "dataSrc": ""
-              },
-              "columns": [{
-                  "data": "productid",
-                  "visible": false
-                },
-                {
-                  "data": "customerid",
-                  "visible": false
-                },
-                {
-                  "data": null,
-                  "render": function(data, type, full, meta) {
+    $('#order').DataTable({
+        "ajax": {
+            "url": "include/get_order.php",
+            "dataSrc": ""
+        },
+        "columns": [
+            { "data": "productid", "visible": false },
+            { "data": "orderid", "visible": false },
+            {
+                "data": null,
+                "render": function(data, type, full, meta) {
                     return meta.row + 1; // BIL column
-                  }
-                },
-                {
-                  "data": "customer"
-                },
-                {
-                  "data": "address"
-                },
-                {
-                  "data": "date"
-                },
-                {
-                  "data": "productname"
-                },
-                {
-                  "data": "quantity"
-                },
-                {
-                  "data": "price"
-                },
-                {
-                  "data": "discount"
-                },
-                {
-                  "data": null,
-                  "render": function(data, type, full) {
+                }
+            },
+            { "data": "customer" },
+            { "data": "address" },
+            { "data": "productname" },
+            { "data": "quantity" },
+            { "data": "price" },
+            { "data": "discount" },
+            {
+                "data": null,
+                "render": function(data, type, full) {
                     // Calculate Total Price: (Price - Discount) * Quantity
                     var total = (parseFloat(full.price) - parseFloat(full.discount)) * parseFloat(full.quantity);
                     return total.toFixed(2);
-                  }
-                },
-                {
-                  "data": null,
-                  "render": function(data, type, full, meta) {
+                }
+            },
+            {
+                "data": null,
+                "render": function(data, type, full) {
                     var btnEdit = $('<button/>').addClass('btn btn-info btn-xs editorder')
-                      .attr('data-orderid', data.orderid)
-                      .attr('data-target', '#editordermodal')
-                      .text('Edit');
+                        .attr('data-orderid', full.orderid)
+                        .attr('data-target', '#editordermodal')
+                        .text('Edit');
 
                     var btnDelete = $('<button/>').addClass('btn btn-danger btn-xs deleteorder')
-                      .attr('data-orderid', data.orderid)
-                      .text('Delete');
+                        .attr('data-orderid', full.orderid)
+                        .text('Delete');
 
                     var btnGroup = $('<div/>').addClass('btn-group')
-                      .attr('role', 'group')
-                      .append(btnEdit)
-                      .append(btnDelete);
+                        .attr('role', 'group')
+                        .append(btnEdit)
+                        .append(btnDelete);
 
                     return $('<div/>').append(btnGroup).html();
-                  }
                 }
-              ],
-              "searching": false,
-            });
-          });
-          $('#addOrder').click(function() {
-            $('#addOrderModal').modal('show');
-          });
+            }
+        ],
+        "searching": false,
+    });
+
+    $('#addOrder').click(function() {
+        $('#addOrderModal').modal('show');
+    });
+});
+
         </script>
     </section>
     <!-- modal untuk add order -->
@@ -186,9 +167,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form action="include/order_from_customer.php" method="post" class="php-email-form">
+            <form action="include/add_order.php" method="post" class="php-email-form">
               <div class="mb-3 row">
-                <label for="name" class="col-sm-3 col-form-label">Your Name</label>
+                <label for="name" class="col-sm-3 col-form-label">Customer Name</label>
                 <div class="col-sm-9">
                   <input type="text" name="name" class="form-control" required>
                 </div>
@@ -203,7 +184,7 @@
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="email" class="col-sm-3 col-form-label">Your Email</label>
+                <label for="email" class="col-sm-3 col-form-label">Customer Email</label>
                 <div class="col-sm-9">
                   <input type="email" class="form-control" name="email" required>
                 </div>
@@ -214,13 +195,23 @@
                   <textarea class="form-control" placeholder="Address" id="address" style="height: 100px;" name="address" required></textarea>
                 </div>
               </div>
+
+              <div class="mb-3 row">
+                <div class="col-sm-9" style="margin-top: 10px;">
+                  <select class="form-select" name="discountType" required>
+                    <option selected disabled>Choose discount type</option>
+                    <option value="B40">B40 (10%)</option>
+                    <option value="M40">M40 (5%)</option>
+                  </select>
+                </div>
+              </div>
               <div class="hehe">
                 <div class="mb-3 row product-row">
                   <label for="product" class="col-sm-3 col-form-label">Product Name</label>
                   <div class="col-sm-7">
                     <div class="product-container">
                       <div class="product-row">
-                        <select class="form-select" name="product[]" id="pname" required>
+                        <select class="form-select" name="order_productid" id="pname" required>
                           <option selected disabled>Choose a product</option>
                         </select>
                       </div>
@@ -232,9 +223,9 @@
                   </div>
                 </div>
               </div>
-              <button type="button" class="btn btn-secondary btn-sm mb-3" onclick="addProductInput()">Add Product</button>
+              <!-- <button type="button" class="btn btn-secondary btn-sm mb-3" onclick="addProductInput()">Add Product</button> -->
 
-              <table class="table table-bordered">
+              <!-- <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th scope="col">Product Name</th>
@@ -242,7 +233,7 @@
                   </tr>
                 </thead>
                 <tbody id="cartBody"></tbody>
-              </table>
+              </table> -->
 
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="closeorderForm()">Close</button>
@@ -294,8 +285,7 @@
 
     <script>
       // Example:
-      let cart = [
-      ];
+      let cart = [];
 
       // Function to update the table body with the 'cart' data
       function updateCartTable() {
@@ -324,31 +314,85 @@
     </script>
 
     <script>
+      function addOrder() {
+        // Retrieve form data
+        var formData = $("#addOrderForm").serialize();
+
+        // Make an AJAX request to add the order
+        $.ajax({
+          url: "include/add_order.php",
+          type: "POST",
+          data: formData,
+          success: function(response) {
+            // Check if the order was added successfully
+            if (response.success) {
+              // Reload the DataTable and close the modal
+              $("#product").DataTable().ajax.reload();
+              $("#addOrderModal").modal("hide");
+
+              // Display a success message using SweetAlert
+              Swal.fire({
+                icon: "success",
+                title: "Order Added",
+                text: response.message,
+              });
+            } else {
+              // Display an error message using SweetAlert
+              Swal.fire({
+                icon: "error",
+                title: "Error Adding Order",
+                text: response.message,
+              });
+            }
+          },
+          error: function(error) {
+            console.error("Error adding order:", error);
+            // Display a generic error message using SweetAlert
+            Swal.fire({
+              icon: "error",
+              title: "Error Adding Order",
+              text: "An unexpected error occurred while adding the order.",
+            });
+          },
+        });
+      }
+
       function closeorderForm() {
         $('#addOrderModal').modal('hide');
       }
 
-      function addProductInput() {
-        var pid = document.getElementById('pname').value.split('-')[0];
-        var pname = document.getElementById('pname').value.split('-')[1];
-        var quantity = document.getElementById('quantity').value;
-        cart.push({"id": pid, "name": pname, "quantity": quantity});
-        console.log(cart);
-        updateCartTable();
-        document.getElementById('quantity').value = undefined;
-      }
+      // function addProductInput() {
+      //   var select = $('select[name="product[]"]');
+      //   var quantity = $('input[name="quantity[]"]').val();
+
+      //   if (quantity && quantity > 0) {
+      //     var pid = select.val().split('-')[0];
+      //     var pname = select.val().split('-')[1];
+
+      //     // Append the selected product and quantity to the table
+      //     var row = '<tr><td>' + pname + '</td><td>' + quantity + '</td></tr>';
+      //     $('#cartBody').append(row);
+
+      //     // Clear the input fields
+      //     select.val('');
+      //     $('input[name="quantity[]"]').val('');
+
+      //   } else {
+      //     alert('Please enter a valid quantity.');
+      //   }
+      // }
 
       $(document).ready(function() {
         // AJAX request to fetch product names
         $.ajax({
           type: 'POST',
-          url: 'include/fetch_product.php', // Correct path to your PHP script
+          url: 'include/fetch_product.php',
           dataType: 'json',
           success: function(data) {
-            var select = $('select[name="product[]"]');
+            var select = $('select[name="order_productid"]');
             select.empty();
             $.each(data, function(index, product) {
-              select.append('<option value="' + product.productid + '-' + product.productname + '">' + product.productname + '</option>');
+              select.append('<option value="' + product.productid + '">' + product.productname + '</option>');
             });
           },
           error: function() {

@@ -86,7 +86,7 @@
               <th>BIL</th>
               <th>Name</th>
               <th>Description</th>
-              <th>Price</th>
+              <th>Price (MYR)</th>
               <th>Action</th>
             </tr>
           </thead>
