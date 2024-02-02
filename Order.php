@@ -68,7 +68,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item active">Inventory</li>
+          <li class="breadcrumb-item active">Order</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -90,7 +90,7 @@
               <th>Quantity</th>
               <th>Price</th>
               <th>Discount (%)</th>
-              <th>Total(RM)</th>
+              <th>Total(MYR)</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -134,12 +134,16 @@
                   "data": "price"
                 },
                 {
-                  "data": "discount"
+                  "data": null,
+                  "render": function(data, type, full) {
+                    var discounted = parseFloat(full.discount) / 100;
+                    return discounted.toFixed(2);
+                  }
                 },
                 {
                   "data": null,
                   "render": function(data, type, full) {
-                    // Calculate Total Price: (Price - Discount) * Quantity
+                    
                     var total = (parseFloat(full.price) * parseFloat(full.quantity)) - ((parseFloat(full.price) * parseFloat(full.quantity)) * parseFloat(full.discount) / 100);
                     return total.toFixed(2);
                   }
