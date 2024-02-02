@@ -271,21 +271,50 @@
           </div>
           <div class="modal-body">
             <form id="editOrderForm" method="post" action="include/update_order.php">
-              <!-- Product ID hidden field -->
+              <!-- Order ID hidden field -->
               <input type="hidden" id="editorderid" name="editorderid">
 
-              <div class="form-group">
-                <label for="editproductname">Product Name</label>
-                <input type="text" class="form-control" id="editproductname" name="editproductname" required>
+              <div class="mb-3 row">
+                <label for="editcustomername" class="col-sm-3 col-form-label">Customer Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="editcustomername" name="editcustomername" required>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="editproductdescription">Product Description</label>
-                <input type="text" class="form-control" id="editproductdescription" name="editproductdescription" required>
+              <div class="mb-3 row">
+                <label for="editaddress" class="col-sm-3 col-form-label">Address</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control" placeholder="Address" id="editaddress" style="height: 100px;" name="editaddress" required></textarea>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="editprice">Price</label>
-                <input type="number" class="form-control" id="editprice" name="editprice" required>
+              <div class="mb-3 row">
+                <label for="editorder_productid" class="col-sm-3 col-form-label">Product Name</label>
+                <div class="col-sm-9">
+                  <!-- Assuming you want to keep the existing structure for selecting products -->
+                  <div class="product-container">
+                    <div class="product-row">
+                      <select class="form-select" name="editorder_productid" id="editorder_productid" required>
+                        <!-- Options will be dynamically loaded using JavaScript -->
+                      </select>
+                    </div>
+                  </div>
+                </div>
               </div>
+              <div class="mb-3 row">
+                <label for="editquantity" class="col-sm-3 col-form-label">Quantity</label>
+                <div class="col-sm-9">
+                  <input type="number" class="form-control" id="editquantity" name="editquantity" placeholder="Quantity" required>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <div class="col-sm-9" style="margin-top: 10px;">
+                  <select class="form-select" name="editdiscountType" id="editdiscountType" required>
+                    <option selected disabled>Choose discount type</option>
+                    <option value="B40">B40 (10%)</option>
+                    <option value="M40">M40 (5%)</option>
+                  </select>
+                </div>
+              </div>
+
             </form>
           </div>
           <div class="modal-footer">
@@ -295,11 +324,12 @@
         </div>
       </div>
     </div>
+
     <!-- habis modal -->
 
     </div>
 
-    <!-- <script>
+    <!-- <script>p
       // Example:
       let cart = [];
 
@@ -330,7 +360,6 @@
     </script> -->
 
     <script>
-
       // function addProductInput() {
       //   var select = $('select[name="product[]"]');
       //   var quantity = $('input[name="quantity[]"]').val();

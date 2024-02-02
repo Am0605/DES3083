@@ -160,7 +160,27 @@ function editProduct() {
             
           },
         });
-      }
+      };
+      
+      $('#order tbody').on('click', 'button.deleteorder', function() {
+        var orderId = $(this).data('orderid');
+      
+        if (confirm('Are you sure you want to delete this order?')) {
+          $.ajax({
+            type: 'POST',
+            url: 'include/delete_order.php', // Replace with the actual path to your delete_order script
+            data: { orderId: orderId },
+            success: function(response) {
+              alert(response); // Display the response from the server (e.g., "Order deleted successfully")
+              // Reload the DataTable after deletion
+              $('#order').DataTable().ajax.reload();
+            },
+            error: function() {
+              alert('Error deleting order');
+            }
+          });
+        }
+      });
 
       function closeorderForm() {
         $('#addOrderModal').modal('hide');
